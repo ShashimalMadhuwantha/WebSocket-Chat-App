@@ -48,11 +48,11 @@ socket.on("chat message", ({ username: sender, message }) => {
     chatBox.scrollTop = chatBox.scrollHeight;
 });
 
-// ✅ Update online users list
 socket.on("update users", (users) => {
     console.log("Updated online users:", users);
     const userList = document.getElementById("userList");
     userList.innerHTML = "";
+    
     users.forEach(user => {
         const li = document.createElement("li");
         li.textContent = user;
