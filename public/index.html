@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern WebSocket Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="chat-app">
+        <!-- Sidebar for Rooms & Users -->
+        <div id="sidebar">
+            <h3>Rooms</h3>
+            <select id="roomSelect" onchange="joinRoom(this.value)">
+                <option value="general">General</option>
+                <option value="gaming">Gaming</option>
+                <option value="coding">Coding</option>
+            </select>
+
+            <h3>Online Users</h3>
+            <ul id="userList"></ul>
+
+            <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+        </div>
+
+        <!-- Chat Container -->
+        <div id="chat-container">
+            <h2>Group Chat</h2>
+
+            <!-- Chat Messages -->
+            <div id="chat">
+                <p id="typingStatus"></p>
+                <ul id="messages"></ul>
+            </div>
+
+            <!-- Message Input -->
+            <div id="message-box">
+                <button onclick="insertEmoji()">😊</button>
+                <input id="messageInput" type="text" placeholder="Type a message..." oninput="sendTypingStatus()" onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
